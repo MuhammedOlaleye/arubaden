@@ -1,0 +1,152 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Arubaden Brand Colors */
+  --color-ocean: #073B5C;
+  --color-lagoon: #168AAD;
+  --color-turquoise: #3BC7C4;
+  --color-coastal-mist: #EAF7FA;
+  --color-warm-white: #FAFCFB;
+  --color-midnight: #102A3A;
+  --color-sand: #E8DED0;
+  --color-seafoam: #D9E8EA;
+
+  /* Semantic mappings */
+  --color-background: var(--color-warm-white);
+  --color-foreground: var(--color-midnight);
+  --color-primary: var(--color-ocean);
+  --color-primary-foreground: #FAFCFB;
+  --color-secondary: var(--color-coastal-mist);
+  --color-secondary-foreground: var(--color-ocean);
+  --color-accent: var(--color-turquoise);
+  --color-accent-foreground: var(--color-midnight);
+  --color-muted: var(--color-seafoam);
+  --color-muted-foreground: #4a6478;
+  --color-border: var(--color-seafoam);
+  --color-input: var(--color-seafoam);
+  --color-ring: var(--color-lagoon);
+  --color-card: var(--color-warm-white);
+  --color-card-foreground: var(--color-midnight);
+  --color-popover: var(--color-warm-white);
+  --color-popover-foreground: var(--color-midnight);
+  --color-destructive: oklch(0.577 0.245 27.325);
+
+  /* Sidebar */
+  --color-sidebar-ring: var(--color-lagoon);
+  --color-sidebar-border: var(--color-seafoam);
+  --color-sidebar-accent-foreground: var(--color-midnight);
+  --color-sidebar-accent: var(--color-coastal-mist);
+  --color-sidebar-primary-foreground: #FAFCFB;
+  --color-sidebar-primary: var(--color-ocean);
+  --color-sidebar-foreground: var(--color-midnight);
+  --color-sidebar: var(--color-warm-white);
+
+  /* Charts */
+  --color-chart-1: var(--color-ocean);
+  --color-chart-2: var(--color-lagoon);
+  --color-chart-3: var(--color-turquoise);
+  --color-chart-4: var(--color-sand);
+  --color-chart-5: var(--color-seafoam);
+
+  /* Typography */
+  --font-sans: 'Manrope', 'Manrope Fallback', system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', 'Instrument Serif Fallback', Georgia, serif;
+
+  /* Radius */
+  --radius: 1rem;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Shadows */
+  --shadow-card: 0 4px 24px 0 rgba(7, 59, 92, 0.08);
+  --shadow-card-hover: 0 8px 40px 0 rgba(7, 59, 92, 0.14);
+  --shadow-nav: 0 2px 16px 0 rgba(7, 59, 92, 0.08);
+}
+
+:root {
+  color-scheme: light;
+  --background: #FAFCFB;
+  --foreground: #102A3A;
+  --card: #FAFCFB;
+  --card-foreground: #102A3A;
+  --popover: #FAFCFB;
+  --popover-foreground: #102A3A;
+  --primary: #073B5C;
+  --primary-foreground: #FAFCFB;
+  --secondary: #EAF7FA;
+  --secondary-foreground: #073B5C;
+  --muted: #D9E8EA;
+  --muted-foreground: #4a6478;
+  --accent: #3BC7C4;
+  --accent-foreground: #102A3A;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #D9E8EA;
+  --input: #D9E8EA;
+  --ring: #168AAD;
+  --radius: 1rem;
+  --sidebar: #FAFCFB;
+  --sidebar-foreground: #102A3A;
+  --sidebar-primary: #073B5C;
+  --sidebar-primary-foreground: #FAFCFB;
+  --sidebar-accent: #EAF7FA;
+  --sidebar-accent-foreground: #102A3A;
+  --sidebar-border: #D9E8EA;
+  --sidebar-ring: #168AAD;
+  --chart-1: #073B5C;
+  --chart-2: #168AAD;
+  --chart-3: #3BC7C4;
+  --chart-4: #E8DED0;
+  --chart-5: #D9E8EA;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif text-primary;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #EAF7FA;
+}
+::-webkit-scrollbar-thumb {
+  background: #168AAD;
+  border-radius: 3px;
+}
