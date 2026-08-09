@@ -10,6 +10,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 import type { Package } from '@/lib/data'
+import { REGISTRATION_FEE_NGN, REGISTRATION_FEE_USD } from '@/lib/data'
 
 // Sidebar with booking CTA
 export function BookingSidebar({ pkg }: { pkg: Package }) {
@@ -30,7 +31,19 @@ export function BookingSidebar({ pkg }: { pkg: Package }) {
         }}
       >
         {/* Price display */}
-        {hasTieredPricing ? (
+        {pkg.priceTBA ? (
+          <div>
+            <p className="text-xs font-medium" style={{ color: '#4a6478' }}>
+              Pricing
+            </p>
+            <p className="font-serif mt-1" style={{ color: '#073B5C', fontSize: '1.75rem', lineHeight: 1.2 }}>
+              To be announced
+            </p>
+            <p className="text-xs mt-1" style={{ color: '#4a6478' }}>
+              Register your interest to be notified first
+            </p>
+          </div>
+        ) : hasTieredPricing ? (
           <div className="flex flex-col gap-3">
             <div
               className="flex items-center justify-between rounded-xl px-4 py-3"
@@ -43,6 +56,11 @@ export function BookingSidebar({ pkg }: { pkg: Package }) {
                 <p className="font-serif text-2xl font-medium mt-0.5" style={{ color: '#073B5C' }}>
                   ₦{pkg.earlyBirdPriceNGN!.toLocaleString()}
                 </p>
+                {pkg.earlyBirdPriceUSD && (
+                  <p className="text-[11px] mt-0.5" style={{ color: '#168AAD' }}>
+                    ≈ ${pkg.earlyBirdPriceUSD.toLocaleString()}
+                  </p>
+                )}
               </div>
               <span
                 className="text-[10px] font-semibold px-2 py-1 rounded-full"
@@ -62,6 +80,11 @@ export function BookingSidebar({ pkg }: { pkg: Package }) {
                 <p className="font-serif text-2xl font-medium mt-0.5" style={{ color: '#073B5C' }}>
                   ₦{pkg.standardPriceNGN!.toLocaleString()}
                 </p>
+                {pkg.standardPriceUSD && (
+                  <p className="text-[11px] mt-0.5" style={{ color: '#4a6478' }}>
+                    ≈ ${pkg.standardPriceUSD.toLocaleString()}
+                  </p>
+                )}
               </div>
             </div>
             <p className="text-[11px]" style={{ color: '#4a647888' }}>
@@ -77,10 +100,23 @@ export function BookingSidebar({ pkg }: { pkg: Package }) {
               ₦{pkg.startingPriceNGN.toLocaleString()}
             </p>
             <p className="text-xs mt-1" style={{ color: '#4a6478' }}>
-              per person
+              ≈ ${pkg.startingPrice.toLocaleString()} per person
             </p>
           </div>
         )}
+
+        {/* Registration fee */}
+        <div
+          className="rounded-xl px-4 py-3"
+          style={{ backgroundColor: '#EAF7FA', border: '1px solid #D9E8EA' }}
+        >
+          <p className="text-xs font-semibold" style={{ color: '#073B5C' }}>
+            Registration fee: ₦{REGISTRATION_FEE_NGN.toLocaleString()} (≈ ${REGISTRATION_FEE_USD.toLocaleString()})
+          </p>
+          <p className="text-[11px] mt-1 leading-relaxed" style={{ color: '#4a6478' }}>
+            Required to register your spot on this trip. Fully credited towards your total trip payment.
+          </p>
+        </div>
 
         {/* Trip details */}
         <div
@@ -315,7 +351,7 @@ export function RelatedPackageCard({ pkg }: { pkg: Package }) {
           {pkg.title}
         </p>
         <p className="text-xs" style={{ color: '#4a6478' }}>
-          {pkg.days} days · from ${pkg.startingPrice.toLocaleString()}
+          {pkg.days} days · {pkg.priceTBA ? 'Price to be announced' : `from $${pkg.startingPrice.toLocaleString()}`}
         </p>
       </div>
     </Link>

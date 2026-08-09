@@ -18,7 +18,7 @@ const badgeColors: Record<string, { bg: string; text: string }> = {
 }
 
 const sharedCardClass =
-  'group flex flex-col rounded-2xl overflow-hidden transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#168AAD]'
+  'group flex flex-col h-full rounded-2xl overflow-hidden transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#168AAD]'
 const sharedCardStyle = {
   backgroundColor: '#FAFCFB',
   boxShadow: '0 4px 24px 0 rgba(7,59,92,0.08)',
@@ -88,16 +88,24 @@ function CardBody({ pkg, priority }: { pkg: Package; priority: boolean }) {
             <span>{pkg.groupSize} pax</span>
           </div>
           <div className="ml-auto text-right">
-            <div>
-              <span className="text-xs" style={{ color: '#4a6478' }}>from </span>
+            {pkg.priceTBA ? (
               <span className="font-semibold text-sm" style={{ color: '#073B5C' }}>
-                ${pkg.startingPrice.toLocaleString()}
+                Price to be announced
               </span>
-            </div>
-            {pkg.startingPriceNGN && (
-              <div className="text-[10px]" style={{ color: '#168AAD' }}>
-                ≈ ₦{pkg.startingPriceNGN.toLocaleString()}
-              </div>
+            ) : (
+              <>
+                <div>
+                  <span className="text-xs" style={{ color: '#4a6478' }}>from </span>
+                  <span className="font-semibold text-sm" style={{ color: '#073B5C' }}>
+                    ${pkg.startingPrice.toLocaleString()}
+                  </span>
+                </div>
+                {pkg.startingPriceNGN && (
+                  <div className="text-[10px]" style={{ color: '#168AAD' }}>
+                    ≈ ₦{pkg.startingPriceNGN.toLocaleString()}
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>

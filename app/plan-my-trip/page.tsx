@@ -46,8 +46,8 @@ export default function PlanMyTripPage() {
           style={{ minHeight: '44vh' }}
         >
           <Image
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=2000&q=80&auto=format&fit=crop"
-            alt="Travel designer planning an itinerary over a world map"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/janis-oppliger-dRHE-XF7wls-unsplash-8N7RITKsudolh3p2HdwzQ1IT4gKHVR.jpg"
+            alt="Travellers studying a sightseeing map together while planning their route"
             fill
             priority
             className="object-cover object-top"
