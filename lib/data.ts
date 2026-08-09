@@ -1,5 +1,9 @@
 // Arubaden placeholder data — replace with CMS content later
 
+// Registration fee required to hold a spot on any Signature Escape. Credited towards the total trip cost.
+export const REGISTRATION_FEE_NGN = 500000
+export const REGISTRATION_FEE_USD = 320
+
 export type TravelStyle =
   | 'Beach & Island'
   | 'Adventure'
@@ -39,8 +43,11 @@ export interface Package {
   suitableFor?: string[]
   startingPrice: number
   startingPriceNGN: number
+  priceTBA?: boolean
   earlyBirdPriceNGN?: number
+  earlyBirdPriceUSD?: number
   standardPriceNGN?: number
+  standardPriceUSD?: number
   paymentPlan?: { label: string; amount: string }[]
   currency: string
   bestPeriod: string
@@ -246,7 +253,9 @@ export const packages: Package[] = [
     startingPrice: 2400,
     startingPriceNGN: 3850000,
     earlyBirdPriceNGN: 3850000,
+    earlyBirdPriceUSD: 2400,
     standardPriceNGN: 4150000,
+    standardPriceUSD: 2600,
     currency: 'USD',
     bestPeriod: 'Year-round',
     image: 'https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=1200&q=80&auto=format&fit=crop',
@@ -307,7 +316,7 @@ export const packages: Package[] = [
     destination: 'Sal Island',
     country: 'Cape Verde',
     departure: 'Lagos, Nigeria',
-    travelDate: 'December 2026',
+    travelDate: 'March 2027',
     destinationSlug: 'cape-verde',
     travelStyle: 'Romantic',
     shortDescription:
@@ -316,23 +325,20 @@ export const packages: Package[] = [
     nights: 6,
     groupSize: '2–30',
     suitableFor: ['Couples', 'Newly Married Couples', 'Friends', 'Families', 'Professionals', 'Corporate Groups', 'Church Groups', 'Singles'],
-    startingPrice: 1600,
-    startingPriceNGN: 2500000,
-    standardPriceNGN: 2500000,
-    paymentPlan: [
-      { label: 'Registration', amount: '₦500,000' },
-      { label: 'Second payment', amount: '₦700,000' },
-      { label: 'Third payment', amount: '₦700,000' },
-      { label: 'Final balance', amount: '₦600,000' },
-    ],
+    startingPrice: 3000,
+    startingPriceNGN: 4650000,
+    earlyBirdPriceNGN: 4650000,
+    earlyBirdPriceUSD: 3000,
+    standardPriceNGN: 4950000,
+    standardPriceUSD: 3200,
     currency: 'USD',
-    bestPeriod: 'December 2026',
+    bestPeriod: 'March 2027',
     image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&q=80&auto=format&fit=crop',
     badge: 'New',
     featured: true,
     comingSoon: false,
     overview:
-      "Imagine waking up to breathtaking ocean views, walking along white sandy beaches, enjoying romantic sunsets and exploring beautiful islands. This exclusive luxury group vacation is designed for honeymooners, couples, friends and adventure lovers — departing Lagos in December 2026. This isn't just another holiday. It's an experience.",
+      "Imagine waking up to breathtaking ocean views, walking along white sandy beaches, enjoying romantic sunsets and exploring beautiful islands. This exclusive luxury group vacation is designed for honeymooners, couples, friends and adventure lovers — departing Lagos in March 2027. This isn't just another holiday. It's an experience.",
     highlights: [
       'Return flight from Lagos',
       'Luxury hotel with ocean views',
@@ -376,11 +382,12 @@ export const packages: Package[] = [
     ],
     accommodation: '6 nights at a luxury ocean-view hotel in Cape Verde with daily breakfast. Hotel features beach access, pool and stunning Atlantic views.',
     faqs: [
-      { question: 'What is the travel date?', answer: 'This trip departs in December 2026 from Lagos. Exact dates will be confirmed to registered guests.' },
-      { question: 'Is there a payment plan?', answer: 'Yes — you can register with ₦500,000 and spread the balance across three further instalments. Contact us on WhatsApp to get started.' },
+      { question: 'What is the travel date?', answer: 'This trip departs in March 2027 from Lagos. Exact dates will be confirmed to registered guests.' },
+      { question: 'What is the difference between Early Bird and Standard pricing?', answer: 'Early Bird pricing (₦4,650,000 / ≈$3,000) is available for guests who register and make payment ahead of the deadline. Standard pricing (₦4,950,000 / ≈$3,200) applies thereafter. Both include the same full package.' },
+      { question: 'Is there a payment plan?', answer: 'Yes — you can secure your spot with a ₦500,000 (≈$320) registration fee, which is credited towards your total trip cost, then spread the balance across further instalments. Contact us on WhatsApp to get started.' },
       { question: 'Does the package include flights?', answer: 'Yes. A return flight from Lagos to Cape Verde is included in the package price.' },
       { question: 'Is this suitable for honeymooners?', answer: 'Absolutely — this package is designed with couples and newly married pairs in mind, with romantic settings and a professional photographer throughout.' },
-      { question: 'Why book early?', answer: 'Early registration secures the lowest airfare, your guaranteed hotel room, priority visa processing and access to the flexible instalment plan. Seats are limited.' },
+      { question: 'Why book early?', answer: 'Early registration secures the lower Early Bird rate, your guaranteed hotel room, priority visa processing and access to the flexible instalment plan. Seats are limited.' },
     ],
   },
   {
@@ -394,8 +401,9 @@ export const packages: Package[] = [
       'Seven days exploring West Africa\'s friendliest destination — river cruises, bird watching, vibrant markets and Atlantic beaches.',
     days: 7,
     groupSize: '2–10',
-    startingPrice: 1600,
-    startingPriceNGN: 2560000,
+    startingPrice: 0,
+    startingPriceNGN: 0,
+    priceTBA: true,
     currency: 'USD',
     bestPeriod: 'Nov – Apr',
     image: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1200&q=80&auto=format&fit=crop',
@@ -437,7 +445,7 @@ export const packages: Package[] = [
     accommodation: 'Seven nights at a well-appointed Atlantic coast hotel near Senegambia Strip.',
     faqs: [
       { question: 'Is The Gambia safe?', answer: 'The Gambia is considered one of the safest destinations in West Africa and is very welcoming to visitors.' },
-      { question: 'When will this trip be available?', answer: 'We are finalising the last details. Register your interest and we will notify you the moment bookings open.' },
+      { question: 'When will pricing and this trip be available?', answer: 'Pricing is being finalised and will be announced soon. Register your interest and we will notify you the moment pricing and bookings open.' },
       { question: 'Can Nigerians fly direct?', answer: 'There are connecting flights from Lagos and Abuja. We advise on the best routing for your dates.' },
     ],
   },

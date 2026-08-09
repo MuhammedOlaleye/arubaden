@@ -88,16 +88,24 @@ function CardBody({ pkg, priority }: { pkg: Package; priority: boolean }) {
             <span>{pkg.groupSize} pax</span>
           </div>
           <div className="ml-auto text-right">
-            <div>
-              <span className="text-xs" style={{ color: '#4a6478' }}>from </span>
+            {pkg.priceTBA ? (
               <span className="font-semibold text-sm" style={{ color: '#073B5C' }}>
-                ${pkg.startingPrice.toLocaleString()}
+                Price to be announced
               </span>
-            </div>
-            {pkg.startingPriceNGN && (
-              <div className="text-[10px]" style={{ color: '#168AAD' }}>
-                ≈ ₦{pkg.startingPriceNGN.toLocaleString()}
-              </div>
+            ) : (
+              <>
+                <div>
+                  <span className="text-xs" style={{ color: '#4a6478' }}>from </span>
+                  <span className="font-semibold text-sm" style={{ color: '#073B5C' }}>
+                    ${pkg.startingPrice.toLocaleString()}
+                  </span>
+                </div>
+                {pkg.startingPriceNGN && (
+                  <div className="text-[10px]" style={{ color: '#168AAD' }}>
+                    ≈ ₦{pkg.startingPriceNGN.toLocaleString()}
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>
