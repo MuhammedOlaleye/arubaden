@@ -177,7 +177,7 @@ export const destinations: Destination[] = [
     tagline: 'The Smiling Coast of West Africa',
     description:
       "The Gambia is West Africa's smallest and most welcoming country — a river nation flanked by Atlantic beaches, alive with birdlife, vibrant markets and an infectious warmth.",
-    image: '/images/destinations/banjul-gambia.png',
+    image: '/images/destinations/banjul-coast.png',
     featured: true,
     highlights: ['River Gambia pirogue cruises', 'Abuko Nature Reserve birdwatching', 'Albert Market', 'Atlantic beaches'],
     travelStyles: ['Culture & Heritage', 'Adventure', 'Group'],
