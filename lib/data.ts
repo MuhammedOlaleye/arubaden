@@ -258,6 +258,7 @@ export const packages: Package[] = [
     standardPriceUSD: 2600,
     currency: 'USD',
     bestPeriod: 'Year-round',
+    travelDate: 'December 2026',
     image: 'https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=1200&q=80&auto=format&fit=crop',
     badge: 'Popular',
     featured: true,
