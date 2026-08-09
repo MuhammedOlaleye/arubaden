@@ -18,7 +18,7 @@ const badgeColors: Record<string, { bg: string; text: string }> = {
 }
 
 const sharedCardClass =
-  'group flex flex-col rounded-2xl overflow-hidden transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#168AAD]'
+  'group flex flex-col h-full rounded-2xl overflow-hidden transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#168AAD]'
 const sharedCardStyle = {
   backgroundColor: '#FAFCFB',
   boxShadow: '0 4px 24px 0 rgba(7,59,92,0.08)',

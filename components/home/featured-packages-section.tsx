@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import PackageCard from '@/components/package-card'
 import SectionHeading from '@/components/section-heading'
+import ScrollReveal from '@/components/scroll-reveal'
 import { packages } from '@/lib/data'
 
 export default function FeaturedPackagesSection() {
@@ -33,7 +34,9 @@ export default function FeaturedPackagesSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
           {featured.map((pkg, i) => (
-            <PackageCard key={pkg.slug} pkg={pkg} priority={i === 0} />
+            <ScrollReveal key={pkg.slug} variant="slide-up" delay={i * 120} className="h-full">
+              <PackageCard pkg={pkg} priority={i === 0} />
+            </ScrollReveal>
           ))}
         </div>
       </div>
